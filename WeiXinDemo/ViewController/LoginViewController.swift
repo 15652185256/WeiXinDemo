@@ -16,6 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
     
     var PasswordTextFeild:UITextField!
     
+    var IsSwitch:UISwitch!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +41,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         
         //设置导航背景图
         self.navigationController?.navigationBar.barTintColor = RGBA (86.0, g:173.0, b: 216.0, a: 1)
-        
-        //返回按钮
-        let returnButton = createButton(CGRect(x:0, y:0 ,width:60, height:30), Text: "< 返回", ImageName: "", bgImageName: "", Target: self, Method: #selector(LoginViewController.returnButtonClick))
-        let item1 = UIBarButtonItem(customView: returnButton)
-        self.navigationItem.leftBarButtonItem = item1
-    }
-    
-    
-    //返回
-    func returnButtonClick() {
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -80,8 +71,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         self.view.addSubview(self.PasswordTextFeild)
         self.PasswordTextFeild.delegate = self
         
+        
+        //是否保存登陆
+        self.IsSwitch = UISwitch()
+        //设置位置（开关大小无法设置）
+        self.IsSwitch.center = CGPointMake(WIDTH/2,CGRectGetMaxY(self.PasswordTextFeild.frame)+30)
+        //设置默认值
+        self.IsSwitch.on = true
+        self.IsSwitch.addTarget(self, action: #selector(LoginViewController.switchDidChange),forControlEvents:UIControlEvents.ValueChanged)
+        self.view.addSubview(self.IsSwitch)
+        
         //登录
-        let loginButton = createButton(CGRect(x:20, y:CGRectGetMaxY(PasswordTextFeild.frame)+15 ,width:WIDTH-40, height:36), Text: "登录", ImageName: "", bgImageName: "", Target: self, Method: #selector(LoginViewController.loginButtonClick))
+        let loginButton = createButton(CGRect(x:20, y:CGRectGetMaxY(IsSwitch.frame)+15 ,width:WIDTH-40, height:36), Text: "登录", ImageName: "", bgImageName: "", Target: self, Method: #selector(LoginViewController.loginButtonClick))
         loginButton.backgroundColor = RGBA (86.0, g:173.0, b: 216.0, a: 1)
         loginButton.titleLabel?.font = UIFont.systemFontOfSize(18.0)
         loginButton.layer.masksToBounds = true;
@@ -102,6 +103,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    //是否保存登陆
+    func switchDidChange(){
+        //打印当前值
+        print(self.IsSwitch.on)
+    }
+    
     
     //登录
     func loginButtonClick() {
@@ -111,6 +118,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         NSUserDefaults.standardUserDefaults().setObject(self.UserNameTextFeild.text, forKey: "weixinID")
         
         NSUserDefaults.standardUserDefaults().setObject(self.PasswordTextFeild.text, forKey: "weixinPwd")
+        
+        //配置自动登陆
+        NSUserDefaults .standardUserDefaults().setBool(self.IsSwitch.on, forKey: "wxautologin")
+        
+        //同步用户配置
+        NSUserDefaults .standardUserDefaults().synchronize()
         
         let vc:ChatTableViewController = ChatTableViewController()
         

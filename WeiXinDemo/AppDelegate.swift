@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let navigationVC = UINavigationController(rootViewController: BuddyListTableViewController());
+        let navigationVC = UINavigationController(rootViewController: LoginViewController());
         self.window?.rootViewController = navigationVC;
         self.window?.makeKeyAndVisible();
         
