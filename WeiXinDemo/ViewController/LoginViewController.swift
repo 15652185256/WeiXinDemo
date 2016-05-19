@@ -18,6 +18,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
     
     var IsSwitch:UISwitch!
     
+    //需要登陆了
+    var requireLogin = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,26 +62,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         self.ServerTextFeild = createTextField(CGRect(x:20, y:100 ,width:WIDTH-40, height:36), placeholder: "请输入服务器域名", passWord: false, Font: 14)
         self.view.addSubview(self.ServerTextFeild)
         self.ServerTextFeild.delegate = self
-        
+        self.ServerTextFeild.text = "localhost"
         
         //用户名
         self.UserNameTextFeild = createTextField(CGRect(x:20, y:CGRectGetMaxY(self.ServerTextFeild.frame)+15 ,width:WIDTH-40, height:36), placeholder: "请输入用户名", passWord: false, Font: 14)
         self.view.addSubview(self.UserNameTextFeild)
         self.UserNameTextFeild.delegate = self
-        
+        self.UserNameTextFeild.text = "bear@zhaoxd.com"
         
         //密码
         self.PasswordTextFeild = createTextField(CGRect(x:20, y:CGRectGetMaxY(self.UserNameTextFeild.frame)+15 ,width:WIDTH-40, height:36), placeholder: "请输入密码", passWord: true, Font: 14)
         self.view.addSubview(self.PasswordTextFeild)
         self.PasswordTextFeild.delegate = self
-        
+        self.PasswordTextFeild.text = "bear"
         
         //是否保存登陆
         self.IsSwitch = UISwitch()
         //设置位置（开关大小无法设置）
         self.IsSwitch.center = CGPointMake(WIDTH/2,CGRectGetMaxY(self.PasswordTextFeild.frame)+30)
         //设置默认值
-        self.IsSwitch.on = true
+        self.IsSwitch.on = false
         self.IsSwitch.addTarget(self, action: #selector(LoginViewController.switchDidChange),forControlEvents:UIControlEvents.ValueChanged)
         self.view.addSubview(self.IsSwitch)
         
@@ -125,9 +129,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RCAnimatedImag
         //同步用户配置
         NSUserDefaults .standardUserDefaults().synchronize()
         
-        let vc:ChatTableViewController = ChatTableViewController()
+        //需要登陆
+        self.requireLogin = true
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        let navigationVC = UINavigationController(rootViewController: BuddyListTableViewController())
+        
+        self.presentViewController(navigationVC, animated: true, completion: nil)
     }
     
     

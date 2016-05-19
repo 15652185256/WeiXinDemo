@@ -20,11 +20,135 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
     //密码
     var pwd = ""
     
-    //状态代理
+    //好友状态代理
     var ztdl : ZhuangTaiDelegate?
-    
-    //消息代理
+    //微信消息代理
     var xxdl : XiaoXiDelegate?
+    
+    
+    
+    
+    
+    
+    
+    //建立通道
+    func buildStream()  {
+        xs = XMPPStream()
+        print("building Stream")
+        xs!.addDelegate(self, delegateQueue: dispatch_get_main_queue())
+    }
+    
+    //通道代理方法: 已经连接上
+    func xmppStreamDidConnect(sender: XMPPStream!){
+        print("connected to the server!")
+        self.isOPen = true
+        do {
+            try xs?.authenticateWithPassword(pwd)
+        } catch {
+            fatalError("密码错误")
+        }
+    }
+    
+    //验证成功
+    func xmppStreamDidAuthenticate(sender: XMPPStream!) {
+        //上线
+        goOnline()
+    }
+    
+    
+    
+    
+    //发送上线状态
+    func goOnline() {
+        let p = XMPPPresence()
+        xs!.sendElement(p)
+    }
+    //发送下线状态
+    func goOffline() {
+        let p = XMPPPresence(type: "unavailable")
+        xs!.sendElement(p)
+    }
+    
+    
+    
+    
+    
+    //登入
+    func connect() -> Bool {
+        //建立通道
+        buildStream()
+        
+        let weixinID = NSUserDefaults.standardUserDefaults().stringForKey("weixinID")
+        let password = NSUserDefaults.standardUserDefaults().stringForKey("weixinPwd")
+        let server = NSUserDefaults.standardUserDefaults().stringForKey("wxserver")
+        
+        
+        //如果通道已经连接,直接返回连接成功
+        if xs!.isConnected() {
+            return true
+        }
+        
+        //如果用户名和密码不为空
+        if (weixinID != nil && password != nil) {
+            
+            xs!.myJID = XMPPJID.jidWithString(weixinID!)
+            pwd = password!
+            xs!.hostName = server!
+            
+            print("\(xs!.myJID) \(pwd) \(xs!.hostName)")
+            
+            do {
+                try xs?.connectWithTimeout(5000)
+            } catch {
+                fatalError("密码错误")
+            }
+        }
+        
+        return false
+    }
+    
+    //登出
+    func disConnect() {
+        if self.xs != nil {
+            if xs!.isConnected() {
+                goOffline()
+                xs?.disconnect()
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    //在线状态
+    func xmppStream(sender: XMPPStream!, didReceivePresence presence: XMPPPresence!) {
+        //我自己的用户名
+        let myUser = sender.myJID.user
+        //好友的用户名
+        let user = presence.from().user
+        //好友所在的域
+        let domain = presence.from().domain
+        //状态类型
+        let pType = presence.type()
+        //如果状态不是自己的
+        if (user != myUser) {
+            //状态保存的结构
+            var zt = ZhuangTai()
+            //保存了状态的完整用户名
+            zt.name = user + "@" + domain
+            //上线
+            if pType == "available" {
+                zt.isOnline = true
+                ztdl?.isOn(zt)
+            }else if pType == "unavailable" {
+                ztdl?.isOff(zt)
+            }
+        }
+        
+    }
+    
+    
     
     //收到消息
     func xmppStream(sender: XMPPStream!, didSendMessage message: XMPPMessage!) {
@@ -55,67 +179,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
     }
     
     
-    //收到状态
-    func xmppStream(sender: XMPPStream!, didReceivePresence presence: XMPPPresence!) {
-        //我自己的用户名
-        let myUser = sender.myJID.user
-        //好友的用户名
-        let user = presence.from().user
-        //好友所在的域
-        let domain = presence.from().domain
-        //状态类型
-        let pType = presence.type()
-        //如果状态不是自己的
-        if (user != myUser) {
-            //状态保存的结构 
-            var zt = ZhuangTai()
-            //保存了状态的完整用户名
-            zt.name = user + "@" + domain
-
-            //上线
-            if pType == "availabel" {
-                zt.isOnline = true
-                ztdl?.isOn(zt)
-            }else if pType == "unavailabel" {
-                ztdl?.isOff(zt)
-            }
-        }
-        
-    }
     
-    
-    //连接成功
-    func xmppStreamDidConnect(sender: XMPPStream!) {
-        isOPen = true
-        //验证密码
-        do {
-            try xs?.authenticateWithPassword(pwd)
-        } catch {
-            fatalError("密码错误")
-        }
-    }
-    
-    //验证成功
-    func xmppStreamDidAuthenticate(sender: XMPPStream!) {
-        //上线
-        goOnline()
-    }
-    
-    //建立通道
-    func buildStream()  {
-        xs = XMPPStream()
-        xs?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
-    }
-    
-    //上线
-    func goOnline() {
-        
-    }
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let navigationVC = UINavigationController(rootViewController: LoginViewController());
+        let navigationVC = UINavigationController(rootViewController: BuddyListTableViewController());
         self.window?.rootViewController = navigationVC;
         self.window?.makeKeyAndVisible();
         
