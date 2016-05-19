@@ -66,8 +66,9 @@ func createTextField (frame:CGRect, placeholder:String, passWord:Bool, Font:CGFl
     //键盘类型
     textField.keyboardType = UIKeyboardType.EmailAddress
     //关闭首字母大写
-    
+    textField.autocapitalizationType = UITextAutocapitalizationType.None
     //清除按钮
+    textField.clearButtonMode = UITextFieldViewMode.Always
     
     //字体
     textField.font = UIFont.systemFontOfSize(Font)
