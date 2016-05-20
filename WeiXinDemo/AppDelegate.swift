@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
     var pwd = ""
     var isOpen = false
     
-    //聊天和状态代理
+    //状态代理
     var ztdl: ZhuangTaiDelegate?
-    
+    //聊天代理
     var xxdl: XiaoXiDelegate?
     
     
@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
         
         //print(message)
         
-        print("222222")
+        //print("222222")
         
         //存储当前消息
         var msg = WXMessage()

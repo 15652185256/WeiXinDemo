@@ -58,6 +58,10 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoX
 
         self.view.backgroundColor = UIColor.whiteColor()
         
+        //代理
+        let del = self.appDelegate()
+        del.xxdl = self
+        
         self.createNav()
         
         self.prepareView()
@@ -114,7 +118,7 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoX
             xmlmsg.addAttributeWithName("from", stringValue: NSUserDefaults.standardUserDefaults().stringForKey("weixinID"))
             xmlmsg.addChild(body)
             
-            print(xmlmsg)
+            //print(xmlmsg)
             
             //发送消息
             self.appDelegate().sendElement(xmlmsg)
@@ -216,7 +220,7 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoX
         
         xmlmsg.addChild(composing)
         
-        print(xmlmsg)
+        //print(xmlmsg)
         
         //发送消息
         self.appDelegate().sendElement(xmlmsg)
