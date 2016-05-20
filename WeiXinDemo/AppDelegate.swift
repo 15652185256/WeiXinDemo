@@ -13,17 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
 
     var window: UIWindow?
     
-    //通道
+    //定义stream通道
     var xs : XMPPStream?
-    //服务器是否开启
-    var isOPen = false
-    //密码
     var pwd = ""
+    var isOpen = false
     
-    //好友状态代理
-    var ztdl : ZhuangTaiDelegate?
-    //微信消息代理
-    var xxdl : XiaoXiDelegate?
+    //聊天和状态代理
+    var ztdl: ZhuangTaiDelegate?
+    
+    var xxdl: XiaoXiDelegate?
     
     
     
@@ -41,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
     //通道代理方法: 已经连接上
     func xmppStreamDidConnect(sender: XMPPStream!){
         print("connected to the server!")
-        self.isOPen = true
+        self.isOpen = true
         do {
             try xs?.authenticateWithPassword(pwd)
         } catch {
@@ -151,13 +149,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
     
     
     //收到消息
-    func xmppStream(sender: XMPPStream!, didSendMessage message: XMPPMessage!) {
+    func xmppStream(sender: XMPPStream!, didReceiveMessage message: XMPPMessage!) {
         
-        print(message)
+        //print(message)
+        
+        print("222222")
+        
+        //存储当前消息
+        var msg = WXMessage()
         
         //如果是聊天消息
         if message.isChatMessage() {
-            var msg = WXMessage()
+            
             //对消息内容进行判断 对方正在输入
             if message.elementForName("composing") != nil {
                 msg.isComposing = true
@@ -178,8 +181,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, XMPPStreamDelegate {
         }
     }
     
-    
-    
+    //发送消息
+    func sendElement(xmlmsg:DDXMLElement){
+        xs!.sendElement(xmlmsg)
+    }
+
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

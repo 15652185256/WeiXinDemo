@@ -8,9 +8,50 @@
 
 import UIKit
 
-class ChatTableViewController: UITableViewController, UITextFieldDelegate {
+class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoXiDelegate {
+    
+    //和谁聊天
+    var toBuddy = ""
+    //未读消息数组
+    var wxMessages = [WXMessage]()
+    
 
     var msgTextFeild:UITextField!//内容输入框
+    
+    
+    
+    
+    
+    
+    func appDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+    
+    func xs() -> XMPPStream {
+        return self.appDelegate().xs!
+    }
+    
+    
+    func newMsg(msg: WXMessage) {
+        
+        if msg.isComposing {
+            self.navigationItem.title = "对方正在输入..."
+        } else {
+            self.navigationItem.title = self.toBuddy
+            //如果消息正文不为空,则添加到消息数组
+            if msg.body != "" {
+                wxMessages.append(msg)
+            }
+            self.tableView.reloadData()
+        }
+        
+    }
+
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,17 +97,56 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate {
     //发送
     func rightButtonClick() {
         
+        //取文本框文字
+        let chatBodyStr = self.msgTextFeild.text
+        
+        if !chatBodyStr!.isEmpty {
+            //创建XML格式消息体
+            let body = DDXMLElement.elementWithName("body") as! DDXMLElement
+            
+            body.setStringValue(chatBodyStr)
+            
+            //消息类型
+            let xmlmsg = DDXMLElement.elementWithName("message") as! DDXMLElement
+            
+            xmlmsg.addAttributeWithName("type", stringValue: "chat")
+            xmlmsg.addAttributeWithName("to", stringValue: toBuddy)
+            xmlmsg.addAttributeWithName("from", stringValue: NSUserDefaults.standardUserDefaults().stringForKey("weixinID"))
+            xmlmsg.addChild(body)
+            
+            print(xmlmsg)
+            
+            //发送消息
+            self.appDelegate().sendElement(xmlmsg)
+            
+            //清空聊天框
+            self.msgTextFeild.text = ""
+            
+            
+            var wxMsg = WXMessage()
+            wxMsg.body = chatBodyStr!
+            wxMsg.isMe = true
+            
+            wxMessages.append(wxMsg)
+            self.tableView.reloadData()
+            
+            
+        }
+        
     }
     
     //设置页面
     func prepareView() {
+        
+        self.tableView = UITableView(frame: CGRectMake(0, 0, WIDTH, HEIGHT-64))
+        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
 
         let bgView = createView(CGRect(x: 0, y: 0, width: WIDTH, height: 50))
         bgView.backgroundColor = UIColor.grayColor()
         self.tableView.tableHeaderView = bgView
         
         
-        //服务器
+        //输入框
         self.msgTextFeild = createTextField(CGRect(x:15, y: (50-36)/2,width:WIDTH-30, height:36), placeholder: "请输入内容", passWord: false, Font: 14)
         bgView.addSubview(self.msgTextFeild)
         self.msgTextFeild.delegate = self
@@ -84,11 +164,11 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     
-    
     //输入完毕
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         //收起键盘
         self.tapRootAction()
+        
         return true
     }
     
@@ -115,13 +195,32 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate {
     
     //收起键盘
     func tapRootAction() {
+        self.textFieldChange()
         self.view.endEditing(true)
     }
     
     
     
-    
-    
+    //输入完毕
+    func textFieldChange() {
+        
+        //创建XML格式消息体
+        let composing = DDXMLElement.elementWithName("composing") as! DDXMLElement
+        composing.addAttributeWithName("xmlns", stringValue: "http://jabber.org/protocol/chatstates")
+        
+        //消息类型
+        let xmlmsg = DDXMLElement.elementWithName("message") as! DDXMLElement
+        
+        xmlmsg.addAttributeWithName("to", stringValue: toBuddy)
+        xmlmsg.addAttributeWithName("from", stringValue: NSUserDefaults.standardUserDefaults().stringForKey("weixinID"))
+        
+        xmlmsg.addChild(composing)
+        
+        print(xmlmsg)
+        
+        //发送消息
+        self.appDelegate().sendElement(xmlmsg)
+    }
     
     
     
@@ -136,23 +235,37 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return wxMessages.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MyCell")!
+
+        let aMsg = wxMessages[indexPath.row]
+        
+        //如果是本人发出的消息
+        if aMsg.isMe {
+            //则单元格文字居右
+            cell.textLabel?.textAlignment = .Right
+            //字体灰色
+            cell.textLabel?.textColor = UIColor.grayColor()
+        } else {
+            //好友的消息字体是桔色
+            cell.textLabel?.textColor = UIColor.orangeColor()
+        }
+        
+        //单元格文字 是 消息的正文
+        cell.textLabel!.text = aMsg.body
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -21,6 +21,7 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
     var unreadList = [WXMessage]()
     //好友状态数组 数据源
     var ztList = [ZhuangTai]()
+    
     //当前选中好友
     var currentBuddyName = ""
     //是否已经登录
@@ -47,7 +48,7 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
         //如果配置了用户名和自动登陆。开始登陆
         if (myID != nil && autologin) {
             
-            self.leftButtonClick()
+            //self.leftButtonClick()
             
             self.navigationItem.title = myID! + "的好友"
             //其他情况，则转的登陆页
@@ -106,6 +107,7 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
     
     //收到离线或未读消息
     func newMsg(aMsg:WXMessage) {
+        //print("222222")
         //消息正文不为空
         if aMsg.body != "" {
             self.unreadList.append(aMsg)
@@ -153,10 +155,6 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
     
     //登入
     func leftButtonClick() {
-        //清空数组 保持容量
-        self.unreadList.removeAll(keepCapacity: false)
-        self.ztList.removeAll(keepCapacity: false)
-        
         //连接服务器
         zdl().connect()
         //我的状态改为在线
@@ -165,10 +163,6 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
     
     //登出
     func rightButtonClick() {
-        //清空数组 保持容量
-        self.unreadList.removeAll(keepCapacity: false)
-        self.ztList.removeAll(keepCapacity: false)
-        
         //断开服务器
         zdl().disConnect()
         //我的状态改为离线
@@ -240,7 +234,6 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
         //好友用户名(正文)
         let buddyName = self.ztList[indexPath.row].name
         
-        
         //未读消息条数
         var unread = 0
         
@@ -268,6 +261,29 @@ class BuddyListTableViewController: UITableViewController, ZhuangTaiDelegate, Xi
         
         
         return cell
+    }
+    
+    //自定义跳转到聊天画面
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.currentBuddyName = self.ztList[indexPath.row].name
+        
+        //微信聊天页
+        let VC = ChatTableViewController()
+        
+        //传递 聊天对象
+        VC.toBuddy = currentBuddyName
+        
+        //在未读消息里查找属聊天对象的消息,并传递给聊天页面的消息数组
+        for msg in self.unreadList {
+            if currentBuddyName == msg.from {
+                VC.wxMessages.append(msg)
+            }
+        }
+        
+        //删除聊天对象的未读消息
+        removeValueFromArray(self.currentBuddyName, aArray: &self.unreadList)
+        
+        self.navigationController?.pushViewController(VC, animated: true)
     }
 
     /*

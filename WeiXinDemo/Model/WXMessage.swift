@@ -49,6 +49,9 @@ func getRemoveIndex(a: String,aArray: [WXMessage]) -> [Int] {
 
 //把指定的消息从数组中全部删除
 func removeValueFromArray(s1:String,inout aArray: [WXMessage]) {
+    
+    print("aArray:\(aArray.count)")
+    
     //获取正确的删除顺序
     let indexArray = getRemoveIndex(s1, aArray: aArray)
     
