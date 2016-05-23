@@ -75,3 +75,39 @@ func createTextField (frame:CGRect, placeholder:String, passWord:Bool, Font:CGFl
     
     return textField
 }
+
+
+
+
+
+
+func getTextRectSize(text:NSString, font:CGFloat, size:CGSize) -> CGRect {
+    
+    let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(font)]
+    
+    let option = NSStringDrawingOptions.UsesLineFragmentOrigin
+    
+    let rect:CGRect = text.boundingRectWithSize(size, options: option, attributes: attributes, context: nil)
+    
+    //        println("rect:\(rect)");
+    
+    return rect;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

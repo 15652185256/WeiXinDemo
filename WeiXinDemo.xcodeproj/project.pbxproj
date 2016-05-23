@@ -7,6 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047D3B931CEC036E0009C166 /* ZhuangTaiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D3B921CEC036E0009C166 /* ZhuangTaiDelegate.swift */; };
+		047D3B951CEC03890009C166 /* XiaoXiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D3B941CEC03890009C166 /* XiaoXiDelegate.swift */; };
+		047D3B9B1CEC550A0009C166 /* BlueBubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 047D3B971CEC550A0009C166 /* BlueBubble2.png */; };
+		047D3B9C1CEC550A0009C166 /* GreenBubble2.png in Resources */ = {isa = PBXBuildFile; fileRef = 047D3B981CEC550A0009C166 /* GreenBubble2.png */; };
+		047D3B9D1CEC550A0009C166 /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 047D3B991CEC550A0009C166 /* offline.png */; };
+		047D3B9E1CEC550A0009C166 /* online.png in Resources */ = {isa = PBXBuildFile; fileRef = 047D3B9A1CEC550A0009C166 /* online.png */; };
+		0483F8781CEEEF6B00985612 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483F8771CEEEF6B00985612 /* ChatTableViewCell.swift */; };
+		0483F87B1CEEF12F00985612 /* contact_creat_group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8791CEEF12F00985612 /* contact_creat_group@2x.png */; };
+		0483F87C1CEEF12F00985612 /* contact_friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F87A1CEEF12F00985612 /* contact_friend@2x.png */; };
+		0483F87E1CEEFF5100985612 /* chat_send_nor_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F87D1CEEFF5100985612 /* chat_send_nor_pic@2x.png */; };
+		0483F8911CEF054400985612 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8801CEF054400985612 /* image.png */; };
+		0483F8921CEF054400985612 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8811CEF054400985612 /* photo.png */; };
+		0483F8931CEF054400985612 /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8821CEF054400985612 /* photo1.png */; };
+		0483F8941CEF054400985612 /* photo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8831CEF054400985612 /* photo1@2x.png */; };
+		0483F8951CEF054400985612 /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8841CEF054400985612 /* photo@2x.png */; };
+		0483F8961CEF054400985612 /* ReceiverTextNodeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8851CEF054400985612 /* ReceiverTextNodeBkg.png */; };
+		0483F8971CEF054400985612 /* ReceiverTextNodeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8861CEF054400985612 /* ReceiverTextNodeBkg@2x.png */; };
+		0483F8981CEF054400985612 /* ReceiverVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8871CEF054400985612 /* ReceiverVoiceNodeDownloading.png */; };
+		0483F8991CEF054400985612 /* ReceiverVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8881CEF054400985612 /* ReceiverVoiceNodeDownloading@2x.png */; };
+		0483F89A1CEF054400985612 /* ReceiverVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8891CEF054400985612 /* ReceiverVoiceNodePlaying.png */; };
+		0483F89B1CEF054400985612 /* ReceiverVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88A1CEF054400985612 /* ReceiverVoiceNodePlaying@2x.png */; };
+		0483F89C1CEF054400985612 /* SenderAppNodeBkg_HL.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88B1CEF054400985612 /* SenderAppNodeBkg_HL.png */; };
+		0483F89D1CEF054400985612 /* SenderAppNodeBkg_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88C1CEF054400985612 /* SenderAppNodeBkg_HL@2x.png */; };
+		0483F89E1CEF054400985612 /* SenderVoiceNodeDownloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88D1CEF054400985612 /* SenderVoiceNodeDownloading.png */; };
+		0483F89F1CEF054400985612 /* SenderVoiceNodeDownloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88E1CEF054400985612 /* SenderVoiceNodeDownloading@2x.png */; };
+		0483F8A01CEF054400985612 /* SenderVoiceNodePlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F88F1CEF054400985612 /* SenderVoiceNodePlaying.png */; };
+		0483F8A11CEF054400985612 /* SenderVoiceNodePlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0483F8901CEF054400985612 /* SenderVoiceNodePlaying@2x.png */; };
 		04FF2B291CEB1128009C4B76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF2B281CEB1128009C4B76 /* AppDelegate.swift */; };
 		04FF2B2B1CEB1128009C4B76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF2B2A1CEB1128009C4B76 /* ViewController.swift */; };
 		04FF2B2E1CEB1128009C4B76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FF2B2C1CEB1128009C4B76 /* Main.storyboard */; };
@@ -117,6 +144,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		047D3B921CEC036E0009C166 /* ZhuangTaiDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZhuangTaiDelegate.swift; sourceTree = "<group>"; };
+		047D3B941CEC03890009C166 /* XiaoXiDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XiaoXiDelegate.swift; sourceTree = "<group>"; };
+		047D3B971CEC550A0009C166 /* BlueBubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble2.png; sourceTree = "<group>"; };
+		047D3B981CEC550A0009C166 /* GreenBubble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBubble2.png; sourceTree = "<group>"; };
+		047D3B991CEC550A0009C166 /* offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offline.png; sourceTree = "<group>"; };
+		047D3B9A1CEC550A0009C166 /* online.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = online.png; sourceTree = "<group>"; };
+		0483F8771CEEEF6B00985612 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		0483F8791CEEF12F00985612 /* contact_creat_group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact_creat_group@2x.png"; sourceTree = "<group>"; };
+		0483F87A1CEEF12F00985612 /* contact_friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact_friend@2x.png"; sourceTree = "<group>"; };
+		0483F87D1CEEFF5100985612 /* chat_send_nor_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_send_nor_pic@2x.png"; sourceTree = "<group>"; };
+		0483F8801CEF054400985612 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		0483F8811CEF054400985612 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		0483F8821CEF054400985612 /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
+		0483F8831CEF054400985612 /* photo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo1@2x.png"; sourceTree = "<group>"; };
+		0483F8841CEF054400985612 /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
+		0483F8851CEF054400985612 /* ReceiverTextNodeBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverTextNodeBkg.png; sourceTree = "<group>"; };
+		0483F8861CEF054400985612 /* ReceiverTextNodeBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverTextNodeBkg@2x.png"; sourceTree = "<group>"; };
+		0483F8871CEF054400985612 /* ReceiverVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		0483F8881CEF054400985612 /* ReceiverVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
+		0483F8891CEF054400985612 /* ReceiverVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReceiverVoiceNodePlaying.png; sourceTree = "<group>"; };
+		0483F88A1CEF054400985612 /* ReceiverVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReceiverVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
+		0483F88B1CEF054400985612 /* SenderAppNodeBkg_HL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderAppNodeBkg_HL.png; sourceTree = "<group>"; };
+		0483F88C1CEF054400985612 /* SenderAppNodeBkg_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderAppNodeBkg_HL@2x.png"; sourceTree = "<group>"; };
+		0483F88D1CEF054400985612 /* SenderVoiceNodeDownloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodeDownloading.png; sourceTree = "<group>"; };
+		0483F88E1CEF054400985612 /* SenderVoiceNodeDownloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodeDownloading@2x.png"; sourceTree = "<group>"; };
+		0483F88F1CEF054400985612 /* SenderVoiceNodePlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SenderVoiceNodePlaying.png; sourceTree = "<group>"; };
+		0483F8901CEF054400985612 /* SenderVoiceNodePlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SenderVoiceNodePlaying@2x.png"; sourceTree = "<group>"; };
 		04FF2B251CEB1128009C4B76 /* WeiXinDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiXinDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FF2B281CEB1128009C4B76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FF2B2A1CEB1128009C4B76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +377,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		047D3B961CEC550A0009C166 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				0483F87D1CEEFF5100985612 /* chat_send_nor_pic@2x.png */,
+				0483F8791CEEF12F00985612 /* contact_creat_group@2x.png */,
+				0483F87A1CEEF12F00985612 /* contact_friend@2x.png */,
+				047D3B971CEC550A0009C166 /* BlueBubble2.png */,
+				047D3B981CEC550A0009C166 /* GreenBubble2.png */,
+				047D3B991CEC550A0009C166 /* offline.png */,
+				047D3B9A1CEC550A0009C166 /* online.png */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		0483F87F1CEF054400985612 /* qipao */ = {
+			isa = PBXGroup;
+			children = (
+				0483F8801CEF054400985612 /* image.png */,
+				0483F8811CEF054400985612 /* photo.png */,
+				0483F8821CEF054400985612 /* photo1.png */,
+				0483F8831CEF054400985612 /* photo1@2x.png */,
+				0483F8841CEF054400985612 /* photo@2x.png */,
+				0483F8851CEF054400985612 /* ReceiverTextNodeBkg.png */,
+				0483F8861CEF054400985612 /* ReceiverTextNodeBkg@2x.png */,
+				0483F8871CEF054400985612 /* ReceiverVoiceNodeDownloading.png */,
+				0483F8881CEF054400985612 /* ReceiverVoiceNodeDownloading@2x.png */,
+				0483F8891CEF054400985612 /* ReceiverVoiceNodePlaying.png */,
+				0483F88A1CEF054400985612 /* ReceiverVoiceNodePlaying@2x.png */,
+				0483F88B1CEF054400985612 /* SenderAppNodeBkg_HL.png */,
+				0483F88C1CEF054400985612 /* SenderAppNodeBkg_HL@2x.png */,
+				0483F88D1CEF054400985612 /* SenderVoiceNodeDownloading.png */,
+				0483F88E1CEF054400985612 /* SenderVoiceNodeDownloading@2x.png */,
+				0483F88F1CEF054400985612 /* SenderVoiceNodePlaying.png */,
+				0483F8901CEF054400985612 /* SenderVoiceNodePlaying@2x.png */,
+			);
+			path = qipao;
+			sourceTree = "<group>";
+		};
 		04FF2B1C1CEB1128009C4B76 = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +488,8 @@
 			isa = PBXGroup;
 			children = (
 				04FF2B5C1CEB116D009C4B76 /* WXMessage.swift */,
+				047D3B921CEC036E0009C166 /* ZhuangTaiDelegate.swift */,
+				047D3B941CEC03890009C166 /* XiaoXiDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +513,8 @@
 		04FF2B5F1CEB116D009C4B76 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0483F87F1CEF054400985612 /* qipao */,
+				047D3B961CEC550A0009C166 /* root */,
 				04FF2BBD1CEB128A009C4B76 /* BgImage */,
 			);
 			path = Images;
@@ -428,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				04FF2B611CEB116D009C4B76 /* BuddyListTableViewCell.swift */,
+				0483F8771CEEEF6B00985612 /* ChatTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -533,8 +630,8 @@
 		04FF2B9B1CEB116D009C4B76 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04FF2B9C1CEB116D009C4B76 /* BuddyListTableViewController.swift */,
 				04FF2B9D1CEB116D009C4B76 /* LoginViewController.swift */,
+				04FF2B9C1CEB116D009C4B76 /* BuddyListTableViewController.swift */,
 				04FF2BC41CEB194D009C4B76 /* ChatTableViewController.swift */,
 			);
 			path = ViewController;
@@ -939,13 +1036,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FF2B331CEB1128009C4B76 /* LaunchScreen.storyboard in Resources */,
+				0483F8A01CEF054400985612 /* SenderVoiceNodePlaying.png in Resources */,
+				0483F8921CEF054400985612 /* photo.png in Resources */,
+				0483F87B1CEEF12F00985612 /* contact_creat_group@2x.png in Resources */,
+				0483F8951CEF054400985612 /* photo@2x.png in Resources */,
 				04FF2BC11CEB128A009C4B76 /* 1.jpg in Resources */,
+				0483F89B1CEF054400985612 /* ReceiverVoiceNodePlaying@2x.png in Resources */,
+				0483F89E1CEF054400985612 /* SenderVoiceNodeDownloading.png in Resources */,
+				0483F89F1CEF054400985612 /* SenderVoiceNodeDownloading@2x.png in Resources */,
+				0483F89D1CEF054400985612 /* SenderAppNodeBkg_HL@2x.png in Resources */,
+				047D3B9E1CEC550A0009C166 /* online.png in Resources */,
+				0483F8A11CEF054400985612 /* SenderVoiceNodePlaying@2x.png in Resources */,
 				04FF2BC21CEB128A009C4B76 /* 2.jpg in Resources */,
+				0483F8971CEF054400985612 /* ReceiverTextNodeBkg@2x.png in Resources */,
+				0483F8931CEF054400985612 /* photo1.png in Resources */,
+				047D3B9B1CEC550A0009C166 /* BlueBubble2.png in Resources */,
 				04FF2BC31CEB128A009C4B76 /* 3.jpg in Resources */,
 				04FF2B301CEB1128009C4B76 /* Assets.xcassets in Resources */,
 				04FF2C521CEB20B1009C4B76 /* README.txt in Resources */,
+				0483F8981CEF054400985612 /* ReceiverVoiceNodeDownloading.png in Resources */,
 				04FF2B2E1CEB1128009C4B76 /* Main.storyboard in Resources */,
+				0483F8991CEF054400985612 /* ReceiverVoiceNodeDownloading@2x.png in Resources */,
+				0483F87E1CEEFF5100985612 /* chat_send_nor_pic@2x.png in Resources */,
+				0483F89A1CEF054400985612 /* ReceiverVoiceNodePlaying.png in Resources */,
+				0483F8941CEF054400985612 /* photo1@2x.png in Resources */,
+				047D3B9D1CEC550A0009C166 /* offline.png in Resources */,
+				047D3B9C1CEC550A0009C166 /* GreenBubble2.png in Resources */,
 				04FF2C571CEB20B1009C4B76 /* build-libidn.sh in Resources */,
+				0483F87C1CEEF12F00985612 /* contact_friend@2x.png in Resources */,
+				0483F89C1CEF054400985612 /* SenderAppNodeBkg_HL.png in Resources */,
+				0483F8961CEF054400985612 /* ReceiverTextNodeBkg.png in Resources */,
+				0483F8911CEF054400985612 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +1095,7 @@
 				04FF2BB51CEB116D009C4B76 /* UIImage+GIF.m in Sources */,
 				04FF2BB21CEB116D009C4B76 /* SDWebImageManager.m in Sources */,
 				04FF2C411CEB20B1009C4B76 /* XMPPParser.m in Sources */,
+				047D3B951CEC03890009C166 /* XiaoXiDelegate.swift in Sources */,
 				04FF2BB91CEB116D009C4B76 /* UIImageView+WebCache.m in Sources */,
 				04FF2BB11CEB116D009C4B76 /* SDWebImageDownloaderOperation.m in Sources */,
 				04FF2BA01CEB116D009C4B76 /* WXMessage.swift in Sources */,
@@ -992,6 +1114,7 @@
 				04FF2B2B1CEB1128009C4B76 /* ViewController.swift in Sources */,
 				04FF2C511CEB20B1009C4B76 /* DispatchQueueLogFormatter.m in Sources */,
 				04FF2C561CEB20B1009C4B76 /* DDXMLNode.m in Sources */,
+				0483F8781CEEEF6B00985612 /* ChatTableViewCell.swift in Sources */,
 				04FF2C471CEB20B1009C4B76 /* XMPPIDTracker.m in Sources */,
 				04FF2BBA1CEB116D009C4B76 /* UIView+WebCacheOperation.m in Sources */,
 				04FF2C431CEB20B1009C4B76 /* XMPPStream.m in Sources */,
@@ -1001,6 +1124,7 @@
 				04FF2BB71CEB116D009C4B76 /* UIImage+WebP.m in Sources */,
 				04FF2C3F1CEB20B1009C4B76 /* XMPPMessage.m in Sources */,
 				04FF2BB31CEB116D009C4B76 /* SDWebImagePrefetcher.m in Sources */,
+				047D3B931CEC036E0009C166 /* ZhuangTaiDelegate.swift in Sources */,
 				04FF2B9F1CEB116D009C4B76 /* Config.swift in Sources */,
 				04FF2C4A1CEB20B1009C4B76 /* GCDAsyncSocket.m in Sources */,
 				04FF2C311CEB20B1009C4B76 /* XMPPAnonymousAuthentication.m in Sources */,

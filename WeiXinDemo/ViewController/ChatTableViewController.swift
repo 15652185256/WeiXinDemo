@@ -143,7 +143,8 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoX
     func prepareView() {
         
         self.tableView = UITableView(frame: CGRectMake(0, 0, WIDTH, HEIGHT-64))
-        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        self.tableView!.registerClass(ChatTableViewCell.self, forCellReuseIdentifier: "MyCell")
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
         let bgView = createView(CGRect(x: 0, y: 0, width: WIDTH, height: 50))
         bgView.backgroundColor = UIColor.grayColor()
@@ -249,25 +250,24 @@ class ChatTableViewController: UITableViewController, UITextFieldDelegate, XiaoX
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("MyCell")!
+        let cell:ChatTableViewCell = tableView.dequeueReusableCellWithIdentifier("MyCell") as! ChatTableViewCell
 
         let aMsg = wxMessages[indexPath.row]
         
-        //如果是本人发出的消息
-        if aMsg.isMe {
-            //则单元格文字居右
-            cell.textLabel?.textAlignment = .Right
-            //字体灰色
-            cell.textLabel?.textColor = UIColor.grayColor()
-        } else {
-            //好友的消息字体是桔色
-            cell.textLabel?.textColor = UIColor.orangeColor()
-        }
-        
-        //单元格文字 是 消息的正文
-        cell.textLabel!.text = aMsg.body
+        cell.configModel(aMsg)
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let aMsg = wxMessages[indexPath.row]
+        
+        let size = getTextRectSize(aMsg.body, font: 14, size: CGSizeMake(180, 20000))
+        
+        let height = size.height + 44
+        
+        return height
     }
 
 
